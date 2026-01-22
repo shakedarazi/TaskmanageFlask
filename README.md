@@ -1,7 +1,4 @@
 
-# TaskNest
-
-TaskNest is a full-stack task manager powered by Flask, OpenAI, and Telegram. It supports user login, task tracking, smart AI recommendations, and Telegram integration for instant notifications and weekly summaries.
 
 ---
 
@@ -142,8 +139,4 @@ frontend/
 
 > Recorded with Loom.
 
----
-
-## 🙌 Credits
-Made with ❤️ by Ron Bitton.
 

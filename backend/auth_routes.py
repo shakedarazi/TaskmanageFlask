@@ -36,7 +36,7 @@ def register():
     return {"message": "User registered"}, 201
 
 @auth_bp.route("/login", methods=["POST"])
-@limiter.limit("5 per minute")
+@limiter.limit("30 per minute")
 def login():
     data = request.get_json()
     valid, error = validate_user_input(data, ["username", "password"])

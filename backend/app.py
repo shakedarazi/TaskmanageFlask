@@ -19,7 +19,7 @@ logging.basicConfig(
 )
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:8000"], supports_credentials=True) #TODO: Remember to add origins - the domain of the deployed frontend
+CORS(app, origins=["http://localhost:8000", "http://localhost:52330", "http://127.0.0.1:52330"], supports_credentials=True) #TODO: Remember to add origins - the domain of the deployed frontend
 init_db(app)
 limiter.init_app(app)
 

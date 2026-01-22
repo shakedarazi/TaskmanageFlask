@@ -1,28 +1,58 @@
 version: '3.9'
 
 services:
-  web:
-    build: .
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shaked_taskmgmt_api
     ports:
       - "5000:5000"
     volumes:
+      # Bind mount for live reload during development
       - .:/app
+    env_file:
+      - .env
     environment:
+      # Can override .env values here if needed
       - FLASK_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/task_management_db
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - SECRET_KEY=${SECRET_KEY}
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - shaked_taskmgmt_network
+    restart: unless-stopped
 
   mongo:
     image: mongo:5
-    restart: always
-    ports:
-      - "27017:27017"
+    container_name: shaked_taskmgmt_mongo
+    # Port NOT exposed externally - only accessible via internal network
+    # Uncomment below if you need direct access from host:
+    # ports:
+    #   - "27017:27017"
     volumes:
-      - mongo_data:/data/db
+      - shaked_taskmgmt_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - shaked_taskmgmt_network
+    restart: always
+
+networks:
+  shaked_taskmgmt_network:
+    name: shaked_taskmgmt_network
+    driver: bridge
 
 volumes:
-  mongo_data:
+  shaked_taskmgmt_mongo_data:
+    name: shaked_taskmgmt_mongo_data
