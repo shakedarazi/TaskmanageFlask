@@ -1,0 +1,187 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.container {
+    flex: 1;
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+aside#sidebar {
+    width: 200px;
+    background-color: #444;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+aside#sidebar button {
+    background-color: #666;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+}
+
+aside#sidebar button:hover {
+    background-color: #555;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+input, button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+pre {
+    background: #eee;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode input,
+body.dark-mode button,
+body.dark-mode pre {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+}
+
+#dark-toggle {
+    position: fixed;
+    top: 0;
+    left: 210px; /* sidebar is 200px wide + 10px padding */
+    z-index: 3;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 1.2;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: fit-content;
+    font-size: 20px;
+}
+
+.full-width-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.auth-message {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}
+
+/* Icon emojis in sidebar buttons */
+#tab-tasks::before {
+    content: "\1F4C5  ";
+}
+
+#tab-ai::before {
+    content: "\1F916  ";
+}
+
+#tab-telegram::before {
+    content: "\1F4E3  ";
+}
+
+#logout-btn::before {
+    content: "\1F512  ";
+}
+
+/* Scrollable task list styling */
+.scrollable {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+body.dark-mode .scrollable {
+    background-color: #2e2e2e;
+    border-color: #444;
+}
+
+/* Done tasks style */
+.task-done strong {
+    text-decoration: line-through;
+    color: green;
+}
+
+body.dark-mode .task-done strong {
+    color: lightgreen;
+}

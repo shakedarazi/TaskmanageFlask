@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskNest - Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <aside id="sidebar" style="display:none;">
+      <div class="sidebar-title">TaskNest</div>
+      <button id="dark-toggle">☀️ / 🌙</button>
+      <button id="tab-tasks">📋 Tasks List</button>
+      <button id="tab-add-task">➕ Add Task</button>
+      <button id="tab-ai">🤖 AI</button>
+      <button id="tab-telegram">📨 Telegram</button>
+      <button id="logout-btn">🚪 Logout</button>
+    </aside>
+
+    <div class="container">
+      <h1 style="margin-top: 60px;">TaskNest</h1>
+
+      <!-- Auth Section -->
+      <section id="auth">
+        <h2>Login / Register</h2>
+        <input type="text" id="auth-username" placeholder="Username" />
+        <input type="password" id="auth-password" placeholder="Password" />
+        <button id="login-btn" class="full-width-btn">Login</button>
+        <button id="register-btn" class="full-width-btn">Register</button>
+        <div id="auth-message" class="auth-message" style="display:none;"></div>
+      </section>
+
+      <!-- Tasks List -->
+      <section id="dashboard" style="display:none;">
+        <h2>Tasks</h2>
+        <div id="task-list" class="scrollable"></div>
+      </section>
+
+      <!-- Add New Task -->
+      <section id="add-task-section" style="display:none;">
+        <h2>Add New Task</h2>
+        <input type="text" id="new-title" placeholder="Title" />
+        <input type="text" id="new-desc" placeholder="Description" />
+        <input type="date" id="new-due" />
+        <input type="text" id="new-category" placeholder="Category (optional)" />
+        <button id="add-task-btn" class="full-width-btn">Add Task</button>
+      </section>
+
+      <!-- AI Recommendation -->
+      <section id="ai-section" style="display:none;">
+        <h2>AI Task Recommendation</h2>
+        <input type="text" id="ai-input" placeholder="Describe your idea..." />
+        <button id="ai-recommend-btn" class="full-width-btn">Get Recommendation</button>
+        <pre id="ai-result"></pre>
+      </section>
+
+      <!-- Telegram Settings -->
+      <section id="telegram-section" style="display:none;">
+        <h2>Update Telegram Chat ID</h2>
+        <input type="text" id="telegram-id" placeholder="Your Telegram Chat ID" />
+        <button id="update-telegram-btn" class="full-width-btn">Update</button>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
